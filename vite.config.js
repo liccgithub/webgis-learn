@@ -8,4 +8,15 @@ export default defineConfig({
     outDir: 'dist',
   },
   base: './',
+  resolve: {
+    alias: {
+      cesium: 'cesium'
+    }
+  },
+  optimizeDeps: {
+    include: ['cesium']
+  },
+  define: {
+    CESIUM_BASE_URL: JSON.stringify('https://unpkg.com/cesium@1.141.0/Build/Cesium/')
+  }
 });

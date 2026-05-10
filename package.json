@@ -1,0 +1,19 @@
+{
+  "name": "webgis-learn",
+  "version": "1.0.0",
+  "description": "WebGIS 学习示例项目 - Leaflet & Cesium",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "cesium": "^1.141.0",
+    "leaflet": "^1.9.4"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
