@@ -1,23 +1,21 @@
-// Leaflet 基础地图示例
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+import { registerInstance } from '../instanceManager.js';
+
 export default function() {
   const container = document.getElementById('map-container');
   if (!container) return;
-  const L = window.L;
-  if (!L) { console.error('Leaflet 未加载'); return; }
 
-  setTimeout(function() {
-    container.style.height = '100%';
-    container.style.width = '100%';
-    const map = L.map('map-container', { zoomControl: false }).setView([39.9042, 116.4074], 12);
+  const map = L.map('map-container', { zoomControl: false }).setView([39.9042, 116.4074], 12);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 19
-    }).addTo(map);
+  L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+    subdomains: ['1', '2', '3', '4'],
+    attribution: '&copy; 高德地图',
+    maxZoom: 18
+  }).addTo(map);
 
-    L.control.zoom({ position: 'bottomright' }).addTo(map);
+  L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-    setTimeout(function() { map.invalidateSize(true); }, 100);
-    console.log('Leaflet 基础地图已加载');
-  }, 50);
+  registerInstance(map);
+  map.invalidateSize(true);
 }

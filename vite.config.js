@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
+import cesium from 'vite-plugin-cesium';
 
 export default defineConfig({
+  plugins: [cesium()],
   server: {
     open: true,
   },
@@ -8,15 +10,4 @@ export default defineConfig({
     outDir: 'dist',
   },
   base: './',
-  resolve: {
-    alias: {
-      cesium: 'cesium'
-    }
-  },
-  optimizeDeps: {
-    include: ['cesium']
-  },
-  define: {
-    CESIUM_BASE_URL: JSON.stringify('https://unpkg.com/cesium@1.141.0/Build/Cesium/')
-  }
 });
